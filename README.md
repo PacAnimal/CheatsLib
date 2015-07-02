@@ -1,25 +1,59 @@
-<div style="padding: 0px 4px;">
-    <div  style="height:14px"><span>README</span><span>.</span><span>md</span></div>
-    <div  style="height:14px"></div>
-    <div  style="height:14px">Библиотека&nbsp;для&nbsp;создания&nbsp;читов&nbsp;на&nbsp;платформе&nbsp;<span>.</span><span>NET</span>&nbsp;<span class="ace_constant ace_numeric">4</span></div>
-    <div  style="height:14px"></div>
-    <div  style="height:14px">ВНИМАНИЕ<span>!</span>&nbsp;ЧИТ&nbsp;БУДЕТ&nbsp;РАБОТАТЬ<span>,</span>&nbsp;ЕСЛИ&nbsp;ОН&nbsp;СКОМПИЛИРОВАН&nbsp;ДЛЯ&nbsp;<span>x86</span>&nbsp;АРХИТЕКТУРЫ&nbsp;<span>(</span><span class="ace_constant ace_numeric">32</span>&nbsp;бита<span class="ace_paren ace_rparen">)</span></div>
-    <div  style="height:14px"></div>
-    <div  style="height:14px">Использование<span>:</span></div>
-    <div  style="height:14px"><span class="ace_constant ace_numeric">1</span><span class="ace_paren ace_rparen">)</span>&nbsp;Конвертирование&nbsp;сигнатуры&nbsp;<span>(</span>строка<span class="ace_paren ace_rparen">)</span>&nbsp;в&nbsp;массив&nbsp;байтов<span>.</span></div>
-    <div  style="height:14px">Использование<span>:</span></div>
-    <div  style="height:14px"><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Tools</span><span>.</span><span>StringToByteArray</span><span>(</span><span class="ace_string ace_start">"</span><span class="ace_string">10&nbsp;6B&nbsp;28&nbsp;FF</span><span class="ace_string ace_end">"</span><span class="ace_paren ace_rparen">)</span><span>;</span>&nbsp;<span>-</span>&nbsp;возвращает&nbsp;<span class="ace_keyword">new</span>&nbsp;<span class="ace_keyword">byte</span><span>[</span><span class="ace_paren ace_rparen">]</span>&nbsp;<span>{</span><span class="ace_constant ace_numeric">0x10</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x6B</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x28</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0xFF</span><span class="ace_paren ace_rparen">}</span><span>;</span></div>
-    <div  style="height:14px">ВНИМАНИЕ<span>!</span>&nbsp;ФУНКЦИЯ&nbsp;НЕ&nbsp;УМЕЕТ&nbsp;ЧИТАТЬ&nbsp;МАСКУ&nbsp;СИГНАТУРЫ<span>!</span></div>
-    <div  style="height:14px"><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-    <div  style="height:14px"><span class="ace_constant ace_numeric">2</span><span class="ace_paren ace_rparen">)</span>&nbsp;Поиск&nbsp;байт&nbsp;в&nbsp;памяти<span>:</span></div>
-    <div  style="height:14px">Использование<span>:</span></div>
-    <div  style="height:14px"><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ace_keyword">new</span>&nbsp;<span>AOBScan</span><span>(</span><span>ProcessID</span><span class="ace_paren ace_rparen">)</span><span>.</span><span>AobScan</span><span>(</span><span class="ace_keyword">byte</span><span>[</span><span class="ace_paren ace_rparen">])</span><span>;</span></div>
-    <div  style="height:14px">функция&nbsp;вернёт&nbsp;адрес&nbsp;найденой&nbsp;сигнатуры<span>.</span>&nbsp;Адрес&nbsp;будет&nbsp;в&nbsp;типе&nbsp;<span>IntPtr</span><span>.</span></div>
-    <div  style="height:14px"><span>ProcessID</span>&nbsp;<span>-</span>&nbsp;это&nbsp;<span>ID</span>&nbsp;процесса&nbsp;в&nbsp;котором&nbsp;надо&nbsp;найти&nbsp;сигнатуру<span>.</span></div>
-    <div  style="height:14px"><span>AobScan</span><span>(</span><span class="ace_keyword">byte</span><span>[</span><span class="ace_paren ace_rparen">])</span>&nbsp;принимает&nbsp;только&nbsp;массив&nbsp;байт&nbsp;для&nbsp;поиска&nbsp;<span>(</span>БЕЗ&nbsp;МАСКИ<span class="ace_paren ace_rparen">)</span></div>
-    <div  style="height:14px"></div>
-    <div  style="height:14px"><span class="ace_constant ace_numeric">3</span><span class="ace_paren ace_rparen">)</span>&nbsp;Поиск&nbsp;сигнатуры&nbsp;с&nbsp;маской<span>:</span></div>
-    <div  style="height:14px"><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>SigScan</span>&nbsp;<span>_sigScan</span>&nbsp;<span>=</span>&nbsp;<span class="ace_keyword">new</span>&nbsp;<span>SigScan</span><span>(</span><span>someProc</span><span>,</span>&nbsp;<span class="ace_keyword">new</span>&nbsp;<span>IntPtr</span><span>(</span><span class="ace_constant ace_numeric">0x123456</span><span class="ace_paren ace_rparen">)</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x1000</span><span class="ace_paren ace_rparen">)</span><span>;</span></div>
-    <div  style="height:14px"><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ace_indent-guide">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>IntPtr</span>&nbsp;<span>pAddr</span>&nbsp;<span>=</span>&nbsp;<span>_sigScan</span><span>.</span><span>FindPattern</span><span>(</span><span class="ace_keyword">new</span>&nbsp;<span class="ace_keyword">byte</span><span>[</span><span class="ace_paren ace_rparen">]</span><span>{</span>&nbsp;<span class="ace_constant ace_numeric">0xFF</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0xFF</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0xFF</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0xFF</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x51</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x55</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0xFC</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">0x11</span>&nbsp;<span class="ace_paren ace_rparen">}</span><span>,</span>&nbsp;<span class="ace_string ace_start">"</span><span class="ace_string">xxxx?xx?</span><span class="ace_string ace_end">"</span><span>,</span>&nbsp;<span class="ace_constant ace_numeric">12</span><span class="ace_paren ace_rparen">)</span><span>;</span></div>
-    <div  style="height:14px"><span>someProc</span>&nbsp;<span>-</span>&nbsp;это&nbsp;процесс&nbsp;в&nbsp;котором&nbsp;надо&nbsp;искать<span>.</span>&nbsp;Тип&nbsp;<span>System</span><span>.</span><span>Diagnostics</span><span>.</span><span>Process</span>&nbsp;<span>.</span></div>
-</div>
+README.md
+<br>
+Библиотека для создания читов на платформе .NET 4
+<b>ВНИМАНИЕ! ЧИТ БУДЕТ РАБОТАТЬ, ЕСЛИ ОН СКОМПИЛИРОВАН ДЛЯ x86 АРХИТЕКТУРЫ (32 бита)
+<br>
+<br>
+Использование:<br>
+1) Конвертирование сигнатуры (строка) в массив байтов.<br>
+Использование:<br>
+Tools.StringToByteArray("10 6B 28 FF");<br>
+ - возвращает new byte[] {0x10, 0x6B, 0x28, 0xFF};<br>
+ ВНИМАНИЕ! ФУНКЦИЯ НЕ УМЕЕТ ЧИТАТЬ МАСКУ СИГНАТУРЫ!
+
+2) Поиск байт в памяти:<br>
+Использование:<br>
+new AOBScan(ProcessID).AobScan(byte[]);<br>
+ функция вернёт адрес найденой сигнатуры.<br>
+Адрес будет в типе IntPtr.<br>
+ProcessID - это ID процесса в котором надо найти сигнатуру.<br>
+AobScan(byte[]) принимает только массив байт для поиска (БЕЗ МАСКИ)
+
+3) Поиск сигнатуры с маской:<br>
+SigScan _sigScan = new SigScan(someProc, new IntPtr(0x123456), 0x1000);<br>
+ IntPtr pAddr = _sigScan.FindPattern(new byte[]{ 0xFF, 0xFF, 0xFF, 0xFF, 0x51, 0x55, 0xFC, 0x11 }, "xxxx?xx?", 12);<br>
+ someProc - это процесс в котором надо искать.<br>
+Тип System.Diagnostics.Process .<br>
+Далее идёт начальный адрес (с которого сканировать), и размер для дампа сканирования.<br>
+FindPattern принимает массив байтов для поиска, потом маску типа String , и смещение от найденного адреса.<br>
+Если смещение не нужно, то нужно просто передать 0.
+
+4) Запись, и чтение из адресов:<br>
+var proc = new ProcessMemory((uint)PIDPROCESS);<br>
+ proc.StartProcess();<br>
+ proc.WriteMem(SomeAdress, bytes);<br>
+ Для начала нам нужно открыть процесс, и это мы выполняем в первой строке.<br>
+PIDPROCESS - это ID процесса в котором надо выполнить замену , или чтение байт.<br>
+Далее мы открываем процесс для записи, и чтения.<br>
+Потом мы записываем по адресу (int) байты (byte) .<br>
+Для чтения, и записи других типов есть такие функции:<br>
+DllImageAddress(string dllname) - возвращает адрес модуля DLL в процессе.<br>
+ImageAddress(int pOffset) - возвращает начальный адрес процесса со смещением pOffset MyProcessName() - возвращает название процесса в типе String Pointer((bool)(string), int, int....) - возвращает указатель.<br>
+Принимает переменную типа bool , если нужно вернуть указатель от главного модуля процесса, или строку с названием модуля, если нужно вернуть указатель от модуля.<br>
+И принимает до 6 смещений.<br>
+ReadByte((bool)(string), int) - возвращает байт, который был считан с модуля, или процесса (так же, как и в указателях) по адресу, который передаётся в типе int Подобные функции ReadByte:<br>
+ReadFloat(), ReadInt(), ReadShort(), ReadUInt(), ReadDouble().<br>
+ReadMem(int,int,(bool)) - читает массив байтов из памяти.<br>
+Первый параметр - это смещение откуда читать (адрес) , второй - это размер байтов которые надо считать, последний параметр типа bool использовать только, если нужно читать байты с базового модуля процесса.<br>
+ReadStringAscii((bool)(string), int, int) - первые параметры понятно из прошлых функций , воторой параметр - это смещение, а 3 параметр - это размер.<br>
+ReadStringUnicode() - подобная ReadStringAscii.<br>
+WriteByte((bool)(string), int, byte) - записывает байт.<br>
+второй параметр - смещение, а 3 это байт который надо записать.<br>
+Подобные функции WriteByte:<br>
+WriteDouble(), WriteFloat(), WriteInt(), WriteShort(), WriteStringAscii(), WriteStringUnicode(), WriteUInt().<br>
+WriteMem(int, byte[], (bool)) - первый парамерт - это смещение.<br>
+Второй - это байты которые надо записать.<br>
+3 параметр - это писать ли в базовый адрес у процесса (не обязателен)
+
+Version 1.0 .<br>
+Все права защищены (c) Nummer.
