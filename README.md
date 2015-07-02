@@ -5,6 +5,8 @@ README.md
 <br>
 <br>
 Использование:<br>
+Для начала нам нужно написать using Nummer.Cheats;<br>
+<br>
 1) Конвертирование сигнатуры (строка) в массив байтов.<br>
 Использование:<br>
 Tools.StringToByteArray("10 6B 28 FF"); - возвращает new byte[] {0x10, 0x6B, 0x28, 0xFF};<br>
